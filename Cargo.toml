@@ -10,6 +10,7 @@ edition = "2021"
 dioxus = { version = "0.6.0", features = ["router", "fullstack"] }
 dioxus-logger = "0.6.1"
 tracing = "0.1.40"
+dioxus-chessboard = { path = "../dioxus-chessboard" }
 
 [features]
 default = []
