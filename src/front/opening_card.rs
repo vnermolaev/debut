@@ -18,7 +18,7 @@ pub fn OpeningCard(opening: data::Opening) -> Element {
             }
             img {
                 src: "{opening.img_src}",
-                class: "w-full h-48 object-cover",
+                class: "w-full h-48 object-contain bg-gray-100",
             },
         }
     }
