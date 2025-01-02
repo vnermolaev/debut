@@ -2,8 +2,8 @@ mod front;
 mod shared;
 
 use crate::shared::data;
+use crate::front::{Openings, Home};
 use dioxus::prelude::*;
-use front::Openings;
 use tracing::Level;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
@@ -12,8 +12,6 @@ enum Route {
     #[layout(Navbar)]
     #[route("/")]
     Home {},
-    #[route("/blog/:id")]
-    Blog { id: i32 },
     #[route("/:color")]
     Openings {
         color: String
@@ -39,73 +37,6 @@ fn App() -> Element {
     }
 }
 
-#[component]
-pub fn Hero() -> Element {
-    rsx! {
-        div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.6/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
-            }
-        }
-    }
-}
-
-/// Home page
-#[component]
-fn Home() -> Element {
-    rsx! {
-        div {
-            class: "bg-gray-100 min-h-screen px-4 sm:px-6 lg:px-8",
-            div {
-                class: "grid grid-cols-1 lg:grid-cols-2 gap-8",
-                // Opening for White.
-                Openings {
-                    color: "White",
-                },
-                // Opening for Black.
-                Openings {
-                    color: "Black",
-                }
-            }
-        }
-
-        // Hero {}
-        // Echo {}
-    }
-}
-
-/// Blog page
-#[component]
-pub fn Blog(id: i32) -> Element {
-    rsx! {
-        div {
-            id: "blog",
-
-            // Content
-            h1 { "This is blog #{id}!" }
-            p { "In blog #{id}, we show how the Dioxus router works and how URL parameters can be passed as props to our route components." }
-
-            // Navigation links
-            Link {
-                to: Route::Blog { id: id - 1 },
-                "Previous"
-            }
-            span { " <---> " }
-            Link {
-                to: Route::Blog { id: id + 1 },
-                "Next"
-            }
-        }
-    }
-}
-
 /// Shared navbar component.
 #[component]
 fn Navbar() -> Element {
@@ -115,16 +46,6 @@ fn Navbar() -> Element {
             Link {
                 to: Route::Home {},
                 "Home"
-            }
-            Link {
-                to: Route::Blog { id: 1 },
-                "Blog"
-            }
-            Link {
-                to: Route::Openings {
-                    color: "white".to_string(),
-                },
-                "Openings"
             }
         }
 
