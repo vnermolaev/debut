@@ -12,10 +12,14 @@
 <body>
 <div id="main"></div>
 <script>
-    // We can't use a module script here because we need to start the script immediately when streaming
+    console.log("Test");
+
     import("/https://vnermolaev.github.io/debut/wasm/debut.js").then(
         ({ default: init }) => {
+        console.log("loaded js");
+
         init("/https://vnermolaev.github.io/debut/wasm/debut_bg.wasm").then((wasm) => {
+            console.log("loaded wasm");
             if (wasm.__wbindgen_start == undefined) {
             wasm.main();
             }
