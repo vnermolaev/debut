@@ -5,7 +5,7 @@ name = "debut"
 
 [web.app]
 
-base_path = ""
+base_path = "debut"
 
 # HTML title tag content
 title = "debut"
