@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>debut</title>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="UTF-8" />
-  <link rel="preload" href="/https://github.com/vnermolaev/debut/wasm/debut_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-            <link rel="preload" href="/https://github.com/vnermolaev/debut/wasm/debut.js" as="script">
-            </head>
-  <body>
-    <div id="main"></div>
-  <script>
-            // We can't use a module script here because we need to start the script immediately when streaming
-            import("/https://github.com/vnermolaev/debut/wasm/debut.js").then(
-                ({ default: init }) => {
-                init("/https://github.com/vnermolaev/debut/wasm/debut_bg.wasm").then((wasm) => {
-                    if (wasm.__wbindgen_start == undefined) {
-                    wasm.main();
-                    }
-                });
-                }
-            );
-            </script>
-            
-            </body>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta charset="UTF-8"/>
+    <link as="fetch" crossorigin="" href="/https://vnermolaev.github.io/debut/wasm/debut_bg.wasm"
+          rel="preload" type="application/wasm">
+    <link as="script" href="/https://vnermolaev.github.io/debut/wasm/debut.js" rel="preload">
+</head>
+<body>
+<div id="main"></div>
+<script>
+    // We can't use a module script here because we need to start the script immediately when streaming
+    import("/https://vnermolaev.github.io/debut/wasm/debut.js").then(
+        ({ default: init }) => {
+        init("/https://vnermolaev.github.io/debut/wasm/debut_bg.wasm").then((wasm) => {
+            if (wasm.__wbindgen_start == undefined) {
+            wasm.main();
+            }
+        });
+        }
+    );
+</script>
+
+</body>
 </html>
