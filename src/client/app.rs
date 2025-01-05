@@ -1,11 +1,12 @@
+use crate::client::{About, Home, Openings, Practice};
 use dioxus::prelude::*;
-use dioxus_chessboard::PlayerColor;
-use crate::front::{Home, About, Openings, Practice};
+use crate::shared::data::PlayerColor;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const HEADER_SVG: Asset = asset!("/assets/header.svg");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
+
 #[component]
 pub fn App() -> Element {
     rsx! {
@@ -26,7 +27,7 @@ pub enum Route {
     About {},
     #[route("/:color")]
     Openings {
-        color: String,
+        color: PlayerColor,
         is_subcomponent: bool,
     },
     #[route("/practice/:id")]

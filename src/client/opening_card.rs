@@ -1,6 +1,6 @@
+use crate::client::app::Route;
 use crate::shared::data;
 use dioxus::prelude::*;
-use crate::front::app::Route;
 
 #[component]
 pub fn OpeningCard(opening: data::Opening) -> Element {

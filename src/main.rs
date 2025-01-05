@@ -1,17 +1,15 @@
-mod front;
+mod server;
+mod client;
 mod shared;
 
-use crate::shared::data;
-use crate::front::App;
+use crate::client::App;
 use dioxus::prelude::*;
-use tracing::Level;
-
+use tracing::{Level};
 
 fn main() {
     dioxus_logger::init(Level::DEBUG).expect("failed to init logger");
     launch(App);
 }
-
 
 // /// Echo component that demonstrates fullstack server functions.
 // #[component]

@@ -10,5 +10,5 @@ mod practice;
 use practice::Practice;
 
 mod app;
-use app::Route;
 pub use app::App;
+use app::Route;
