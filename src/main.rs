@@ -1,10 +1,10 @@
-mod server;
 mod client;
+mod server;
 mod shared;
 
 use crate::client::App;
 use dioxus::prelude::*;
-use tracing::{Level};
+use tracing::Level;
 
 fn main() {
     dioxus_logger::init(Level::DEBUG).expect("failed to init logger");

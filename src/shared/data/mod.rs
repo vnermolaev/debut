@@ -1,7 +1,7 @@
+use dioxus::prelude::*;
+use serde::{Deserialize, Serialize};
 use std::fmt::Display;
 use std::str::FromStr;
-use dioxus::prelude::*;
-use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[derive(Debug, Clone, PartialEq, Props, Serialize, Deserialize)]
 pub struct Opening {

@@ -1,6 +1,6 @@
 use crate::client::Openings;
-use dioxus::prelude::*;
 use crate::shared::data::PlayerColor;
+use dioxus::prelude::*;
 
 /// Home page
 #[component]

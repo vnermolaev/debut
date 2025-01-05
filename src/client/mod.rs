@@ -11,4 +11,3 @@ use practice::Practice;
 
 mod app;
 pub use app::App;
-use app::Route;

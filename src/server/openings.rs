@@ -1,7 +1,7 @@
 use crate::shared::data;
+use crate::shared::data::PlayerColor;
 use dioxus::prelude::*;
 use tracing::debug;
-use crate::shared::data::PlayerColor;
 
 #[server]
 pub async fn openings(

@@ -1,18 +1,19 @@
 use crate::client::app::Route;
 use crate::client::OpeningCard;
-use crate::shared::data;
-use dioxus::html::li::value;
+use crate::server;
+use crate::shared::data::PlayerColor;
 use dioxus::prelude::*;
 use thiserror::Error;
 use tracing::debug;
-use crate::server;
-use crate::shared::data::PlayerColor;
 
 #[component]
 pub fn Openings(color: PlayerColor, is_subcomponent: bool) -> Element {
-    let openings =
-        use_server_future(move || async move { server::openings(color, 0, is_subcomponent.then_some(3)).await.unwrap() })?
-            ().ok_or(RenderError::from(OpeningsError::FetchOpeningsFailed))?;
+    let openings = use_server_future(move || async move {
+        server::openings(color, 0, is_subcomponent.then_some(3))
+            .await
+            .unwrap()
+    })?()
+        .ok_or(RenderError::from(OpeningsError::FetchOpeningsFailed))?;
 
     rsx! {
         div { class: "border border-gray-300 bg-gray-100 min-h-screen flex flex-col",
@@ -45,5 +46,5 @@ pub fn Openings(color: PlayerColor, is_subcomponent: bool) -> Element {
 #[derive(Debug, Error)]
 enum OpeningsError {
     #[error("Failed to fetch openings")]
-    FetchOpeningsFailed
+    FetchOpeningsFailed,
 }

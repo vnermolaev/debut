@@ -1,6 +1,6 @@
 use crate::client::{About, Home, Openings, Practice};
-use dioxus::prelude::*;
 use crate::shared::data::PlayerColor;
+use dioxus::prelude::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
